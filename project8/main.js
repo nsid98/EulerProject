@@ -26,21 +26,22 @@ let num = "731671765313306249192251196744265747423553491949349698352031277450632
 
 
 let gsf = 1
-let resultArr = num.slice(0, 12)
 for(let i = 0; i<=1000; i++){
-  let tmp = resultArr;
-  tmp.push(num[i])
-  tmp.splice(0, 1)
-  if(calcTotal(tmp) > calcTotal(resultArr)){
-    resultArr = tmp
+  let tmp = num.substring(i, i+13).split('');
+  // console.log(tmp);
+  let tmpValue = calcTotal(tmp)
+
+  if(tmpValue > gsf){
+    gsf = tmpValue
   }
 }
+console.log(gsf)
 
 
 function calcTotal(arr){
   let result = 1
   for(let i = 0, max = arr.length; i < max; i++){
-    result = result * arr[i]
+    result = result * parseInt(arr[i])
   }
   return result
 }
